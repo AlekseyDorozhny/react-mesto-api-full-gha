@@ -1,0 +1,16 @@
+.profile__activity {
+  font-size: 18px;
+  font-weight: normal;
+  grid-area: activity;
+  margin: 0;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 540px) {
+  .profile__activity {
+    font-size: 14px;
+    margin-left: 25px;
+  }
+}

@@ -1,0 +1,14 @@
+.auth__subtitle {
+  font-weight: 400;
+  margin: 15px auto 0;
+  line-height: 17px;
+  font-size: 14px;
+  transition: opacity .2s;
+  color: white;
+  text-decoration: none;
+}
+
+.auth__subtitle:hover {
+  opacity: 60%;
+  cursor: pointer;
+}

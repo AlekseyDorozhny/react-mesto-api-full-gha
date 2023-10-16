@@ -1,0 +1,7 @@
+.image-popup {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 64%;
+  text-align: start;
+}

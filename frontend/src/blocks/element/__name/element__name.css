@@ -1,0 +1,16 @@
+.element__name {
+  font-size: 24px;
+  font-weight: 900;
+  margin: 29px auto 23px 21px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  max-width: 187px;
+}
+
+@media screen and (max-width: 950px) {
+  .element__name {
+    margin-top: 25px;
+    margin-bottom: 27px;
+  }
+}

@@ -1,0 +1,30 @@
+.profile {
+  max-width: 69%;
+  margin: 0 auto 50px;
+  color: white;
+  align-items: center;
+  position: relative;
+  display: grid;
+  grid-template-columns: 150px 2fr 150px;
+
+}
+
+@media screen and (max-width: 950px) {
+  .profile {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 670px) {
+  .profile {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .profile {
+    margin-bottom: 35px;
+  }
+}
