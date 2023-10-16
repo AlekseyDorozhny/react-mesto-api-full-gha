@@ -13,14 +13,16 @@ class Api {
 
   getInitialCards() {
     return fetch(`${this.baseUrl}/cards`, {
-      headers: this.headers
+      headers: this.headers,
+      credentials: 'include',
     })
     .then((res) => this._checkResponse(res))
   };
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
-      headers: this.headers
+      headers: this.headers,
+      credentials: 'include',
     })
     .then((res) => this._checkResponse(res))
   }
@@ -29,6 +31,7 @@ class Api {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'PATCH',
       headers: this.headers,
+      credentials: 'include',
       body: JSON.stringify({
         name: name,
         about: about
@@ -41,6 +44,7 @@ class Api {
     return fetch(`${this.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
       headers: this.headers,
+      credentials: 'include',
       body: JSON.stringify({
         avatar: url
       })
@@ -53,6 +57,7 @@ class Api {
     return fetch(`${this.baseUrl}/cards/${ID}/likes `, {
       method: `${method}`,
       headers: this.headers,
+      credentials: 'include',
     })
     .then((res) => this._checkResponse(res))
   }
@@ -61,6 +66,7 @@ class Api {
     return fetch(`${this.baseUrl}/cards`, {
       method: 'POST',
       headers: this.headers,
+      credentials: 'include',
       body: JSON.stringify({
         link: link,
         name: name
@@ -73,6 +79,7 @@ class Api {
     return fetch(`${this.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
       headers: this.headers,
+      credentials: 'include',
     })
     .then((res) => this._checkResponse(res))
   }
@@ -81,7 +88,6 @@ class Api {
 const api = new Api({
   baseUrl: 'http://localhost:3000',
   headers: {
-    'Authorization': document.cookie.jwt,
     'Content-Type': 'application/json'
   }
 });

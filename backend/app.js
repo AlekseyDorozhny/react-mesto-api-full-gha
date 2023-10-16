@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const { errors } = require('celebrate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
+const { cors } = require('./middlewares/cors');
 
 const errorHandler = require('./middlewares/errores');
 
@@ -17,6 +18,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/mestodb', {
 });
 
 const app = express();
+app.use(cors);
+
 app.use(express.json());
 app.use(cookieParser());
 

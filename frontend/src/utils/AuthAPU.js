@@ -6,7 +6,7 @@ class AuthApi {
 
   _checkResponse(res) {
     if (res.ok) {
-      return res.json();
+      return res.json()
     }
     return Promise.reject(`Ошибка: ${res.status}`)
   }
@@ -29,28 +29,18 @@ class AuthApi {
       body: JSON.stringify({email, password})
     })
     .then((res) => this._checkResponse(res))
-    .then((data) => {
-      if (data){
-        localStorage.setItem('jwt', data.token);
-        return data;
-      } else {
-        return;
-      }
-     })
+    .then(() => {document.cookie = "jwt"})
   }
 
-  tokenCheck(token) {
+  tokenCheck() {
     return fetch(`${this.baseUrl}/users/me`, {
       method: 'GET',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
       }
     })
-    .then((res) => {
-      console.log(res.body)
-      this._checkResponse(res)})
+    .then((res) => this._checkResponse(res))
   }
 }
 
