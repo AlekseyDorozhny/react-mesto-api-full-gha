@@ -29,7 +29,8 @@ class AuthApi {
       body: JSON.stringify({email, password})
     })
     .then((res) => this._checkResponse(res))
-    .then(() => {document.cookie = "jwt"})
+    .then(() => {
+      return document.cookie = "jwt"})
   }
 
   tokenCheck() {
@@ -41,6 +42,18 @@ class AuthApi {
       }
     })
     .then((res) => this._checkResponse(res))
+  }
+
+  logout() {
+    return fetch(`${this.baseUrl}/signout`, {
+      method: 'POST',
+      credentials: 'include',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(() => {
+      return document.cookie = "jwt"})
   }
 }
 

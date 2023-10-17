@@ -49,12 +49,16 @@ function App() {
   }, [loggedIn])
 
   function tokenCheck() {
+    const cookieArr = document.cookie.split(";");
+    console.log(cookieArr);
+
     if (document.cookie.indexOf("jwt") == 0){
       authApi.tokenCheck()
       .then((res)=> {
         changeActiveEmail(res.email)
         changeLoggedStatus(true)
         navigate('/', {replace: true})
+        return
       })
         .catch((err) => {console.log(err)})
     }
@@ -69,7 +73,6 @@ function App() {
   }
 
   function handleCardLike({likes, _id, currentUser}) {
-    console.log('лайкаю')
     const isLiked = likes.some(i => i === currentUser._id);
     api.likeHendler(_id, !isLiked).then((newCard) => {
       getCardsData((state) => state.map((c) => c._id === _id ? newCard : c));
@@ -129,7 +132,6 @@ function App() {
   function handleLoginSubmit({email, password}) {
     authApi.authorize({email, password}).then((res) =>{
       if (res){
-        console.log('захожу')
         changeLoggedStatus(true);
         navigate('/', {replace: true});
         tokenCheck()
@@ -143,9 +145,9 @@ function App() {
   function handleLogoutSubmit() {
     console.log('ухожу')
     if (document.cookie.indexOf("jwt") == 0) {
-      document.cookie = "jwt; expires=-1";
+      authApi.logout();
       navigate('/sign-in', { replace: true });
-      changeLoggedStatus(false)
+      changeLoggedStatus(false);
     }
   }
 

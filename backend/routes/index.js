@@ -2,7 +2,7 @@
 const { celebrate, Joi } = require('celebrate');
 
 const router = require('express').Router();
-const { login, createUser } = require('../controllers/users');
+const { login, createUser, logout } = require('../controllers/users');
 const auth = require('../middlewares/auth');
 const NotFoundError = require('../errors/NotFoundError');
 
@@ -32,6 +32,8 @@ router.post(
   }),
   createUser,
 );
+
+router.post('/signout', logout);
 
 router.use('*', auth, (req, res) => {
   throw new NotFoundError('Страницы не существует');
