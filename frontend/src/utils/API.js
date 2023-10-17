@@ -86,11 +86,10 @@ class Api {
 };
 
 const api = new Api({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'http://api.dorozha.mesto.nomoredomainsrocks.ru',
   headers: {
     'Content-Type': 'application/json'
   }
 });
-
 
 export default api
