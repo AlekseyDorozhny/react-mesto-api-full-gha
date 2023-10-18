@@ -37,8 +37,6 @@ class AuthApi {
         return;
       }
      })
-    .then(() => {
-      return document.cookie = "jwt"})
   }
 
   tokenCheck() {
