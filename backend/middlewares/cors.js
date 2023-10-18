@@ -1,5 +1,3 @@
-/* eslint-disable consistent-return */
-/* eslint-disable no-console */
 const allowedCors = [
   'http://localhost:3001',
   'http://dorozha.mesto.nomoredomainsrocks.ru',
@@ -7,7 +5,8 @@ const allowedCors = [
 
 const DEFAULT_ALLOWED_METHODS = 'GET,HEAD,PUT,PATCH,POST,DELETE';
 
-const cors = ((req, res, next) => {
+// eslint-disable-next-line consistent-return
+function cors(req, res, next) {
   const { origin } = req.headers;
   const { method } = req;
   const requestHeaders = req.headers['access-control-request-headers'];
@@ -21,7 +20,7 @@ const cors = ((req, res, next) => {
     return res.end();
   }
   next();
-});
+}
 
 module.exports = {
   cors,
