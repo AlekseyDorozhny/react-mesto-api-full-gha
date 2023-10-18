@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 158.160.75.51
+IP 158.160.75.51
 
 Frontend https://dorozha.mesto.nomoredomainsrocks.ru
 
