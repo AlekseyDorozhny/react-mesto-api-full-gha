@@ -86,7 +86,7 @@ class Api {
 };
 
 const api = new Api({
-  baseUrl: 'https://api.dorozha.mesto.nomoredomainsrocks.ru',
+  baseUrl: 'http://localhost:3000',
   headers: {
     'Content-Type': 'application/json'
   }
