@@ -49,9 +49,8 @@ function App() {
   }, [loggedIn])
 
   function tokenCheck() {
-    const cookieArr = document.cookie.split(";");
-
-    if (document.cookie.indexOf("jwt") === 0){
+    if (localStorage.getItem('jwt')){
+      console.log(localStorage.getItem('jwt'))
       authApi.tokenCheck()
       .then((res)=> {
         changeActiveEmail(res.email)
@@ -142,11 +141,13 @@ function App() {
   }
 
   function handleLogoutSubmit() {
-    if (document.cookie.indexOf("jwt") === 0) {
-      authApi.logout();
-      navigate('/sign-in', { replace: true });
-      changeLoggedStatus(false);
-    }
+      authApi.logout()
+      .then(() => {
+        localStorage.removeItem('jwt');
+        navigate('/sign-in', { replace: true });
+        changeLoggedStatus(false);
+      })
+
   }
 
   return (

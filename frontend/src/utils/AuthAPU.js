@@ -29,6 +29,14 @@ class AuthApi {
       body: JSON.stringify({email, password})
     })
     .then((res) => this._checkResponse(res))
+    .then((data) => {
+      if (data){
+        localStorage.setItem('jwt', 'jwt in cookies');
+        return data;
+      } else {
+        return;
+      }
+     })
     .then(() => {
       return document.cookie = "jwt"})
   }
@@ -42,6 +50,7 @@ class AuthApi {
       }
     })
     .then((res) => this._checkResponse(res))
+    .then((res) => console.log(res))
   }
 
   logout() {
