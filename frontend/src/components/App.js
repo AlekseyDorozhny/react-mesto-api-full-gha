@@ -50,7 +50,6 @@ function App() {
 
   function tokenCheck() {
     const cookieArr = document.cookie.split(";");
-    console.log(cookieArr);
 
     if (document.cookie.indexOf("jwt") === 0){
       authApi.tokenCheck()
@@ -143,7 +142,6 @@ function App() {
   }
 
   function handleLogoutSubmit() {
-    console.log('ухожу')
     if (document.cookie.indexOf("jwt") === 0) {
       authApi.logout();
       navigate('/sign-in', { replace: true });
