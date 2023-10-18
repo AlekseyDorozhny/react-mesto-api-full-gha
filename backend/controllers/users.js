@@ -25,7 +25,7 @@ module.exports.login = (req, res, next) => {
     .catch((err) => next(err));
 };
 
-module.exports.logout = (req, res, next) => {
+module.exports.logout = (req, res) => {
   res.clearCookie('jwt');
   res.sendStatus(200);
 };

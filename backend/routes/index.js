@@ -9,6 +9,12 @@ const NotFoundError = require('../errors/NotFoundError');
 router.use('/users', auth, require('./users'));
 router.use('/cards', auth, require('./cards'));
 
+router.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
+
 router.post(
   '/signin',
   celebrate({

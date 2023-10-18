@@ -52,7 +52,7 @@ function App() {
     const cookieArr = document.cookie.split(";");
     console.log(cookieArr);
 
-    if (document.cookie.indexOf("jwt") == 0){
+    if (document.cookie.indexOf("jwt") === 0){
       authApi.tokenCheck()
       .then((res)=> {
         changeActiveEmail(res.email)
@@ -144,7 +144,7 @@ function App() {
 
   function handleLogoutSubmit() {
     console.log('ухожу')
-    if (document.cookie.indexOf("jwt") == 0) {
+    if (document.cookie.indexOf("jwt") === 0) {
       authApi.logout();
       navigate('/sign-in', { replace: true });
       changeLoggedStatus(false);
