@@ -50,7 +50,6 @@ function App() {
 
   function tokenCheck() {
     if (localStorage.getItem('jwt')){
-      console.log(localStorage.getItem('jwt'))
       authApi.tokenCheck()
       .then((res)=> {
         changeActiveEmail(res.email)
