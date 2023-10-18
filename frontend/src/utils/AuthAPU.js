@@ -25,7 +25,9 @@ class AuthApi {
     return fetch(`${this.baseUrl}/signin`, {
       method: 'POST',
       credentials: 'include',
-      headers: this.headers,
+      headers: {
+        'Content-Type': 'application/json',
+      },
       body: JSON.stringify({email, password})
     })
     .then((res) => this._checkResponse(res))
@@ -59,13 +61,11 @@ class AuthApi {
         'Content-Type': 'application/json',
       }
     })
-    .then(() => {
-      return document.cookie = "jwt"})
   }
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'https://api.dorozha.mesto.nomoredomainsrocks.ru',
+  baseUrl: 'http://127.0.0.1:3000',
   headers: {
     "Content-Type": "application/json"
   }
