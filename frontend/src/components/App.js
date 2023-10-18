@@ -49,6 +49,7 @@ function App() {
   }, [loggedIn])
 
   function tokenCheck() {
+    console.log(localStorage.getItem('jwt'));
     if (localStorage.getItem('jwt')){
       authApi.tokenCheck()
       .then((res)=> {
