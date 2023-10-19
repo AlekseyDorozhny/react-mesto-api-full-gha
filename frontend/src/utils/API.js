@@ -86,11 +86,10 @@ class Api {
 };
 
 const api = new Api({
-  baseUrl: 'https://api.dorozha.mesto.nomoredomainsrocks.ru',
+  baseUrl: 'http://api.dorozha.mesto.nomoredomainsrocks.ru',
   headers: {
     'Content-Type': 'application/json'
   }
 });
-
 
 export default api
