@@ -58,7 +58,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'http://localhost:3000',
+  baseUrl: 'https://api.dorozha.mesto.nomoredomainsrocks.ru',
   headers: {
     "Content-Type": "application/json"
   }
