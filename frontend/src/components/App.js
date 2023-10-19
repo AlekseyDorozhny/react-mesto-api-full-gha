@@ -49,8 +49,7 @@ function App() {
   }, [loggedIn])
 
   function tokenCheck() {
-    console.log(document.cookie)
-    console.log(localStorage.getItem('jwt'));
+    console.log(localStorage.getItem('jwt'))
     if (localStorage.getItem('jwt')){
       authApi.tokenCheck()
       .then((res)=> {
@@ -130,7 +129,9 @@ function App() {
 
   function handleLoginSubmit({email, password}) {
     authApi.authorize({email, password}).then((res) =>{
+      console.log(res)
       if (res){
+
         changeLoggedStatus(true);
         navigate('/', {replace: true});
         tokenCheck()
@@ -142,13 +143,12 @@ function App() {
   }
 
   function handleLogoutSubmit() {
-      authApi.logout()
-      .then(() => {
-        localStorage.removeItem('jwt');
-        navigate('/sign-in', { replace: true });
-        changeLoggedStatus(false);
-      })
-
+    if (localStorage.getItem('jwt')) {
+      authApi.logout();
+      localStorage.removeItem('jwt');
+      navigate('/sign-in', { replace: true });
+      changeLoggedStatus(false);
+    }
   }
 
   return (

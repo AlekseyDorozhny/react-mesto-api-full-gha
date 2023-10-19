@@ -25,20 +25,14 @@ class AuthApi {
     return fetch(`${this.baseUrl}/signin`, {
       method: 'POST',
       credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json',
-      },
+      headers: this.headers,
       body: JSON.stringify({email, password})
     })
     .then((res) => this._checkResponse(res))
     .then((data) => {
-      if (data){
-        localStorage.setItem('jwt', 'jwt in cookies');
-        return data;
-      } else {
-        return;
-      }
-     })
+      localStorage.setItem('jwt', 'jwt in cookie')
+    return data
+    })
   }
 
   tokenCheck() {
@@ -50,7 +44,6 @@ class AuthApi {
       }
     })
     .then((res) => this._checkResponse(res))
-    .then((res) => console.log(res))
   }
 
   logout() {
@@ -65,7 +58,7 @@ class AuthApi {
 }
 
 const authApi = new AuthApi({
-  baseUrl: 'http://127.0.0.1:3000',
+  baseUrl: 'http://localhost:3000',
   headers: {
     "Content-Type": "application/json"
   }
